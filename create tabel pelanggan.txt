@@ -1,0 +1,8 @@
+CREATE  TABLE  pelanggan_1411502469
+	( 
+          kdplg CHAR(5)  NOT  NULL,
+          nmplg VARCHAR2(30),
+	  alamat VARCHAR2(50),
+	  PRIMARY  KEY(kdplg)
+	);
+	

@@ -1,0 +1,9 @@
+CREATE  TABLE  barang_1411502469
+	( 
+          kdbrg CHAR(5)  NOT  NULL,
+          nmbrg VARCHAR2(30),
+	  satuan CHAR(20),
+	  hrgsat number(8,2),
+	  PRIMARY  KEY(kdbrg)
+	);
+	

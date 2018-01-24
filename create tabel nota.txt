@@ -1,0 +1,8 @@
+CREATE  TABLE  nota_1411502469
+	( 
+          no_nota	CHAR(7)  NOT  NULL,
+          tgl_nota	DATE,
+	  kdplg      CHAR(5),
+	PRIMARY  KEY(no_nota)
+	);
+	

@@ -1,0 +1,8 @@
+CREATE  TABLE  pesan_1411502469
+	( 
+          no_nota	CHAR(7)  	NOT  NULL,
+          kdbrg	CHAR(5)	NOT  NULL,
+	jml_pesan	number(3),
+	PRIMARY  KEY(no_nota, kdbrg)
+	);
+	

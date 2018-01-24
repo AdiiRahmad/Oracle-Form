@@ -1,0 +1,42 @@
+DECLARE
+	judul	VARCHAR2(100);
+BEGIN
+	:global.ubah:='T';
+	judul	:='Form Entri Barang';
+	SET_WINDOW_PROPERTY('WINDOW1', WINDOW_STATE, MAXIMIZE);
+	SET_WINDOW_PROPERTY('WINDOW1', TITLE, judul);
+	COUNTER_KDBRG();
+	GO_ITEM('blokbrg.tkdbrg');
+	SET_ITEM_PROPERTY('blokbrg.bkeluar',ENABLED,PROPERTY_TRUE);
+	SET_ITEM_PROPERTY('blokbrg.bhapus',ENABLED,PROPERTY_FALSE);
+	SET_ITEM_PROPERTY('blokbrg.bbatal',ENABLED,PROPERTY_FALSE);
+	SET_ITEM_PROPERTY('blokbrg.bsimpan',ENABLED,PROPERTY_FALSE);
+END;
+
+PROCEDURE     COUNTER_KDBRG    IS
+	x	NUMBER:=0;
+	vnomor	CHAR(5);
+BEGIN
+	BEGIN
+	SELECT  MAX(TO_NUMBER(SUBSTR(kdbrg,2,5))) 
+	INTO		x
+	FROM		barang
+	ORDER BY	kdbrg;
+	EXCEPTION     WHEN    NO_DATA_FOUND     THEN
+			x:=0;
+		END;
+		x:=NVL(x,0)+1;	
+
+		IF    LENGTH(x )= 1    THEN
+		vnomor :='B'||'000'||TO_CHAR(x);
+		ELSIF     LENGTH(x) = 2     THEN
+		vnomor :='B'||'00'||TO_CHAR(x);	
+		ELSIF     LENGTH(x) = 3     THEN
+		vnomor :='B'||'0'||TO_CHAR(x);	
+		ELSE
+		vnomor :=TO_CHAR(x);	
+		END IF;
+		:blokbrg.tkdbrg:= vnomor;
+END;
+
+
